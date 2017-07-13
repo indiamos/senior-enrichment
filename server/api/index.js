@@ -1,6 +1,14 @@
 'use strict'
+
 const api = require('express').Router()
-const db = require('../db')
+const db = require('../../db')
+
+api.use('/campuses', require('./campuses'));
+api.use('/students', require('./students'));
+
+api.use((req, res, next) => {
+  res.status(404).send('Not found');
+});
 
 // If you aren't getting to this object, but rather the index.html (something with a joke) your path is wrong.
 	// I know this because we automatically send index.html for all requests that don't make sense in our backend.
