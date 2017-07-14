@@ -14,7 +14,7 @@ export default function Navbar (props) {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+            <NavLink className="nav-link" to="/campuses">Home <span className="sr-only">(current)</span></NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/students">Students</NavLink>
