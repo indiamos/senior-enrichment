@@ -25,6 +25,7 @@ export function fetchCampuses () {
 export function postCampus (campus) {
 
   return function thunk (dispatch) {
+    console.log('/app/reducers/campuses.js:28:', campus);
     return axios.post('/api/campuses', campus)
       .then(res => res.data)
       .then(newCampus => {

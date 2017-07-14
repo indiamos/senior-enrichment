@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { postCampus, writeCampusName, writeCampusImage } from '../store';
+import { postCampus, addCampus } from '../store';
 
 function AddCampus({ newCampusName, newCampusImage, handleChange, handleSubmit }) {
   return (
@@ -54,17 +54,13 @@ const mapStateToProps = function(state, ownProps) {
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
     handleChange(event) {
-      dispatch(writeCampusName(event.target.value));
-      dispatch(writeCampusImage(event.target.value));
+      dispatch(addCampus(name.value, image.value));
     },
     handleSubmit(name, image, event) {
       event.preventDefault();
 
-      const { campusId } = ownProps;
-
       dispatch(postCampus({ name, image }));
-      dispatch(writeCampusName(''));
-      dispatch(writeCampusImage(''));
+      dispatch(addCampus('', ''));
     }
   };
 };
