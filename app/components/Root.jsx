@@ -9,7 +9,7 @@ import AddStudent from './AddStudent';
 import AllStudents from './AllStudents';
 import Campus from './Campus';
 import CampusList from './CampusList';
-import Student from './Student';
+// import Student from './Student';
 import StudentList from './StudentList';
 import StudentTable from './StudentTable';
 
@@ -36,8 +36,10 @@ export default class Root extends Component {
               <Route path="/campuses/:campusId/students" render={(props) => (<StudentList {...props}/>)}/>
               <Route path="/campuses/new-campus" component={AddCampus} />
               <Route path="/campuses/:campusId" component={Campus}/>
-              {/*<Route path="/campuses/:campusId" render={() => (<Campus campuses={campuses} students={students} />)}/>*/}
+              {/*
+              <Route path="/campuses/:campusId" render={() => (<Campus campuses={campuses} students={students} />)}/>
               <Route path="/students/:studentId" component={Student} />
+              */}
               <Route path="/students/new-student" component={AddStudent} />
               <Route path="/students" component={AllStudents} />
               <Route path="/campuses" component={CampusList} />
