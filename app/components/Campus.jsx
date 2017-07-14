@@ -15,13 +15,10 @@ function Campus(props) {
   //      Uncaught ReferenceError: campuses is not defined
   // The props `Campus` should *actually* be getting are `{ campus, students }` where students is filtered to this particular campus, though we could also take in all students and then filter them afterward. So line 5 above should ideally be
   //      function Campus({ students, campuses }) {
-  // If we have passed in all students, we would filter them as follows:
-  //      const campus = campuses.filter(function(campus) {
-  //        return campus.id === Number(props.match.params.campusId)
-  //      });
 
   return (
     <section className="container">
+      {/* Describe the campus—maybe include a photo, caption, and map link, fun stuff like that… */}
       <div className="row">
         <h2>{campus.name}</h2>
       </div>
@@ -32,6 +29,19 @@ function Campus(props) {
       </figure>
     </section>
   );
+}
+
+// If we have a campus ID and an array of students, we can filter them as follows:
+const getCampusStudents = (campusId, students) => {
+ students.filter(student => {
+   return campusId === Number(student.campusId);
+ });
+};
+
+const mapStateToProps = state => {
+  return {
+    students: getCampusStudents(campusId, state.students)
+  };
 }
 
 export default Campus;

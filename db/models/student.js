@@ -16,4 +16,10 @@ module.exports = db.define('student', {
     type: Sequelize.STRING,
     allowNull: false
   }
+}, {
+  scopes: {
+    populated: () => ({
+      include: [{ model: db.model('campus') }]
+    })
+  }
 });

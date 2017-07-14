@@ -21,4 +21,10 @@ module.exports = db.define('campus', {
   location: {
     type: Sequelize.ARRAY(Sequelize.DOUBLE)
   }
+}, {
+  scopes: {
+    populated: () => ({
+      include: [{ model: db.model('student') }]
+    })
+  }
 });

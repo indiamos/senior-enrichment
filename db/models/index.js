@@ -4,7 +4,6 @@
   // This is an acceptable pattern but it does have limitations in that if you change the name of the model you will have to change every time it is requeired everywhere
 
 'use strict';
-'use strict';
 
 const Sequelize = require('sequelize')
 const db = require('../index.js')
@@ -13,6 +12,7 @@ const Student = require('./student');
 const Campus = require('./campus');
 const User = require('./user');
 
+Campus.hasMany(Student);
 Student.belongsTo(Campus);
 
 module.exports = {
