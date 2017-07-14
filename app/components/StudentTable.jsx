@@ -27,8 +27,11 @@ const StudentTable = ({ campusId, students }) => {
               <button
               type="button"
               className="btn btn-default btn-sm"
-
-              >{ /*onClick="something"*/ }
+              >
+                {
+                   // onClick="something"
+                   // I don't know why the button's glyphicon isn't showing up.
+                }
                 <span className="glyphicon glyphicon-remove-circle"></span> ×
               </button>
             </td>

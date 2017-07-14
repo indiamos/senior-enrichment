@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { postStudent, writeStudentFirstName, writeStudentLastName, writeStudentEmail } from '../store';
 
+/* -----------------    COMPONENT     ------------------ */
+
 function AddStudent({ newStudentFirstName, newStudentLastName, newStudentEmail, newStudentCampus, handleChange, handleSubmit }) {
 
   return (
@@ -70,6 +72,8 @@ function AddStudent({ newStudentFirstName, newStudentLastName, newStudentEmail, 
     </div>
   );
 }
+
+/* -----------------    CONTAINER     ------------------ */
 
 const mapStateToProps = function(state, ownProps) {
   return {

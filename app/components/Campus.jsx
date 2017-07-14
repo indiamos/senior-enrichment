@@ -1,6 +1,9 @@
 import React from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import CampusThumbnail from './CampusThumbnail';
+
+/* -----------------    COMPONENT     ------------------ */
 
 function Campus({ students, campus }) {
   // props *should* contain { students, campus }
@@ -22,16 +25,9 @@ function Campus({ students, campus }) {
     <section className="container">
       <h3>Arguments</h3>
       <p>{ JSON.stringify(arguments) }</p>
-      {/*
-      <div className="row">
-        <h2>{campus.name}</h2>
-      </div>
-
-      <figure>
-        <img src={campus.image} alt={selectedCampus.imageAlt || ''} />
-        <figcaption>{campus.imageCaption || ''}</figcaption>
-      </figure>
-    */}
+      {
+        // <CampusThumbnail />
+      }
     </section>
   );
 }
@@ -42,6 +38,8 @@ const getCampusStudents = (campusId, students) => {
    return campusId === Number(student.campusId);
  });
 };
+
+/* -----------------    CONTAINER     ------------------ */
 
 const mapStateToProps = ( state, ownProps ) => {
   return {

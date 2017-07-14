@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { postCampus, writeCampusName, writeCampusImage } from '../store';
 
+/* -----------------    COMPONENT     ------------------ */
+
 function AddCampus({ newCampusName, newCampusImage, handleChange, handleSubmit }) {
   return (
     <div className="container">
@@ -43,6 +45,8 @@ function AddCampus({ newCampusName, newCampusImage, handleChange, handleSubmit }
     </div>
   );
 }
+
+/* -----------------    CONTAINER     ------------------ */
 
 const mapStateToProps = function(state, ownProps) {
   return {

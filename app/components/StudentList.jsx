@@ -1,8 +1,12 @@
+// This component was working but has since been replaced by StudentTable.
+
 import React from 'react';
 import { connect } from 'react-redux';
 import Student from './Student';
 import AddStudent from './AddStudent';
 // import { changeCurrentCampus } from '../store';
+
+/* -----------------    COMPONENT     ------------------ */
 
 export default function StudentList (props) {
   console.log(props);
@@ -37,6 +41,8 @@ export default function StudentList (props) {
 //     );
 //   }
 // }
+
+// /* -----------------    CONTAINER     ------------------ */
 
 // const mapStateToProps = function (state, ownProps) {
 

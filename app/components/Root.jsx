@@ -9,8 +9,9 @@ import AddStudent from './AddStudent';
 import AllStudents from './AllStudents';
 import Campus from './Campus';
 import CampusList from './CampusList';
+import CampusStudents from './CampusStudents';
 // import Student from './Student';
-import StudentList from './StudentList';
+// import StudentList from './StudentList';
 import StudentTable from './StudentTable';
 
 import store, { fetchStudents, fetchCampuses } from '../store';
@@ -33,20 +34,24 @@ export default class Root extends Component {
           <main>
             <Switch>
               <Route path="/campuses/:campusId/new-student" component={AddStudent} />
-              <Route path="/campuses/:campusId/students" render={(props) => (<StudentList {...props}/>)}/>
+              <Route path="/campuses/:campusId/students" render={(props) => (<CampusStudents {...props}/>)}/>
               <Route path="/campuses/new-campus" component={AddCampus} />
               <Route path="/campuses/:campusId" component={Campus}/>
-              {/*
-              <Route path="/campuses/:campusId" render={() => (<Campus campuses={campuses} students={students} />)}/>
-              <Route path="/students/:studentId" component={Student} />
-              */}
+              {
+                // Seems like something like this is needed, but ¯\(°_o)/¯
+                // <Route path="/campuses/:campusId" render={() => (<Campus campuses={campuses} students={students} />)}/>
+                // The following unnecessary and unused component started throwing an error, at some point:
+                // <Route path="/students/:studentId" component={Student} />
+              }
               <Route path="/students/new-student" component={AddStudent} />
               <Route path="/students" component={AllStudents} />
               <Route path="/campuses" component={CampusList} />
               <Route component={CampusList} />
             </Switch>
           </main>
-          {/* <Footer /> */}
+          {
+            // <Footer /> // Wasn't sticking to the bottom on some pages (e.g., StudentTable).
+          }
         </div>
       </BrowserRouter>
     )
