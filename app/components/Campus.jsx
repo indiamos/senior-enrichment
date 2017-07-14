@@ -2,8 +2,9 @@ import React from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-function Campus(props) {
-  // console.log('props:',props);
+function Campus( props ) {
+  // props *should* contain { students, campus }
+  console.log('props:', props);
 
   // // props is just getting the router props (history, location, match) and does not include students or campuses, so everything after this point fails with
   //      Uncaught TypeError: Cannot read property 'filter' of undefined.
@@ -18,15 +19,16 @@ function Campus(props) {
 
   return (
     <section className="container">
-      {/* Describe the campus—maybe include a photo, caption, and map link, fun stuff like that… */}
+      <p>this is where the stuff should be</p>
+      {/* Describe the campus—maybe include a photo, caption, and map link, fun stuff like that…
       <div className="row">
         <h2>{campus.name}</h2>
       </div>
 
       <figure>
-        <img src={campus.image} alt={campus.imageAlt || ''} />
+        <img src={campus.image} alt={selectedCampus.imageAlt || ''} />
         <figcaption>{campus.imageCaption || ''}</figcaption>
-      </figure>
+      </figure>*/}
     </section>
   );
 }
@@ -38,10 +40,11 @@ const getCampusStudents = (campusId, students) => {
  });
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = ( state, ownProps ) => {
   return {
-    students: getCampusStudents(campusId, state.students)
+    students: getCampusStudents(ownProps.match.params.campusId, state.students),
+    campus: state.selectedCampus
   };
 }
 
-export default Campus;
+export default connect(mapStateToProps, null)(Campus);

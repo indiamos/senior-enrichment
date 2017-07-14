@@ -1,4 +1,7 @@
+'use strict';
+
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar (props) {
 
@@ -14,7 +17,7 @@ export default function Navbar (props) {
             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Students</a>
+            <NavLink className="nav-link" to="/students">Students</NavLink>
           </li>
         </ul>
       </div>

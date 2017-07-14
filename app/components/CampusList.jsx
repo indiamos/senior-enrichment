@@ -2,8 +2,9 @@ import React from 'react';
 import { Route, Switch, Redirect, withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Campus from './Campus';
+import store, { fetchCampus } from '../store';
 
-function CampusList({ students, campuses }) {
+function CampusList({ students, campuses, fetchCampus }) {
 
   return (
     <section className="container">
@@ -16,7 +17,7 @@ function CampusList({ students, campuses }) {
           campuses.map(campus => {
             return (
               <li key={campus.id} className="col-sm-6 col-md-4">
-                <NavLink to={`/campuses/${campus.id}`}>
+                <NavLink to={`/campuses/${campus.id}`} onClick={ () => { dispatch(fetchCampus(campus.id)) } }>
                   <h3>{campus.name}</h3>
                   <figure className="thumbnail">
                     <img src={campus.image} alt={campus.imageAlt || ''} />
@@ -41,5 +42,8 @@ const mapStateToProps = state => {
   };
 };
 
-CampusList = withRouter(connect(mapStateToProps)(CampusList));
-export default CampusList;
+const mapDispatchToProps = {
+  fetchCampus
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CampusList));

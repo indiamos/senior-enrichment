@@ -18,8 +18,12 @@ const StudentTable = ({ campusId, students }) => {
           <td>{student.firstName} {student.lastName}</td>
           <td>{student.campusId}</td>
           <td>
-            <button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-remove-circle">×</span>
+            <button
+            type="button"
+            className="btn btn-default btn-sm"
+
+            >{ /*onClick="something"*/ }
+              <span className="glyphicon glyphicon-remove-circle">×</span>
             </button>
           </td>
         </tr>

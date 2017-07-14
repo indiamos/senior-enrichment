@@ -1,15 +1,9 @@
 import axios from 'axios';
 
 // ACTION TYPES
-const GET_CAMPUS = 'GET_CAMPUS';
 const GET_CAMPUSES = 'GET_CAMPUSES';
 
 // ACTION CREATORS
-export function getCampus (campus) {
-  const action = { type: GET_CAMPUS, campus };
-  return action;
-}
-
 export function getCampuses (campuses) {
   const action = { type: GET_CAMPUSES, campuses };
   return action;
@@ -46,9 +40,6 @@ export default function reducer (state = [], action) {
 
     case GET_CAMPUSES:
       return action.campuses;
-
-    case GET_CAMPUS:
-      return [...state, action.campus];
 
     default:
       return state;
