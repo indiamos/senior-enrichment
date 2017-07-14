@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect, withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import AddCampusButton from './AddCampusButton';
 import Campus from './Campus';
 import store, { fetchCampus } from '../store';
 
@@ -11,7 +12,7 @@ function CampusList({ students, campuses, fetchCampus }) {
       <div className="row">
         <h2>Our campuses</h2>
       </div>
-
+      <AddCampusButton />
       <ul className="campuslist row">
         {
           campuses.map(campus => {
@@ -27,9 +28,6 @@ function CampusList({ students, campuses, fetchCampus }) {
             );
           })
         }
-      {/*<li>
-        <NavLink to="/new-campus">Create a campus...</NavLink>
-      </li>*/}
     </ul>
     </section>
   );

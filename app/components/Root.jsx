@@ -18,10 +18,8 @@ import store, { fetchStudents, fetchCampuses } from '../store';
 export default class Root extends Component {
 
   componentDidMount () {
-    const studentsThunk = fetchStudents();
-    const campusesThunk = fetchCampuses();
-    store.dispatch(studentsThunk);
-    store.dispatch(campusesThunk);
+    store.dispatch(fetchStudents());
+    store.dispatch(fetchCampuses());
   }
 
   render() {
@@ -40,6 +38,7 @@ export default class Root extends Component {
               <Route path="/campuses/:campusId" component={Campus}/>
               {/*<Route path="/campuses/:campusId" render={() => (<Campus campuses={campuses} students={students} />)}/>*/}
               <Route path="/students/:studentId" component={Student} />
+              <Route path="/students/new-student" component={AddStudent} />
               <Route path="/students" component={AllStudents} />
               <Route path="/campuses" component={CampusList} />
               <Route component={CampusList} />

@@ -2,9 +2,10 @@ import React from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-function Campus( props ) {
+function Campus({ students, campus }) {
   // props *should* contain { students, campus }
-  console.log('props:', props);
+  // console.log('props:', props);
+  console.log('args:', arguments);
 
   // // props is just getting the router props (history, location, match) and does not include students or campuses, so everything after this point fails with
   //      Uncaught TypeError: Cannot read property 'filter' of undefined.
@@ -19,8 +20,9 @@ function Campus( props ) {
 
   return (
     <section className="container">
-      <p>this is where the stuff should be</p>
-      {/* Describe the campus—maybe include a photo, caption, and map link, fun stuff like that…
+      <h3>Arguments</h3>
+      <p>{ JSON.stringify(arguments) }</p>
+      {/*
       <div className="row">
         <h2>{campus.name}</h2>
       </div>
@@ -28,7 +30,8 @@ function Campus( props ) {
       <figure>
         <img src={campus.image} alt={selectedCampus.imageAlt || ''} />
         <figcaption>{campus.imageCaption || ''}</figcaption>
-      </figure>*/}
+      </figure>
+    */}
     </section>
   );
 }
