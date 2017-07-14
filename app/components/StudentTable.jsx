@@ -1,8 +1,9 @@
 import React from 'react';
+import StudentRow from './StudentRow';
 
 const StudentTable = ({ campusId, students }) => {
   return (
-    <table>
+    <table className="table table-striped table-responsive table-sm">
       <thead>
         <tr>
           <th>ID</th>
@@ -12,21 +13,16 @@ const StudentTable = ({ campusId, students }) => {
         </tr>
       </thead>
       <tbody>
-      { students.map(student => (
-        <tr key={student.id}>
-          <td>{student.id}</td>
-          <td>{student.firstName} {student.lastName}</td>
-          <td>{student.campusId}</td>
-          <td>
-          <button type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </button>
-          </td>
-        </tr>
-      ))}
+        { this.props.students.map(student => <StudentRow student={student} key={student.id} />) }
       </tbody>
     </table>
   );
 };
 
-export default StudentTable;
+/* -----------------    CONTAINER     ------------------ */
+
+const mapStatetoProps = { students };
+
+const mapDispatchtoProps = null;
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(StudentTable);

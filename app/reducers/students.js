@@ -4,24 +4,30 @@ import axios from 'axios';
 
 const GET_STUDENT = 'GET_STUDENT';
 const GET_STUDENTS = 'GET_STUDENTS';
+const REMOVE_STUDENT  = 'REMOVE_STUDENT';
 
 // ACTION CREATORS
 
-export function getStudent (student) {
+export function getStudent(student) {
   const action = { type: GET_STUDENT, student };
   return action;
 }
 
-export function getStudents (students) {
+export function getStudents(students) {
   const action = { type: GET_STUDENTS, students };
+  return action;
+}
+
+export function removeStudent(studentId) {
+  const action = { type: REMOVE_STUDENT, studentId };
   return action;
 }
 
 // THUNK CREATORS
 
-export function fetchStudents () {
+export function fetchStudents() {
 
-  return function thunk (dispatch) {
+  return function thunk(dispatch) {
     return axios.get('/api/students')
       .then(res => res.data)
       .then(students => {
@@ -31,9 +37,9 @@ export function fetchStudents () {
   };
 }
 
-export function postStudent (student) {
+export function postStudent(student) {
 
-  return function thunk (dispatch) {
+  return function thunk(dispatch) {
     return axios.post('/api/students', student)
       .then(res => res.data)
       .then(newStudent => {
@@ -43,19 +49,31 @@ export function postStudent (student) {
   };
 }
 
+export function destroyStudent(studentId) {
+
+  return function thunk(dispatch) {
+    dispatch(removeStudent(studentId));
+    axios.delete(`/api/students/${studentId}`)
+    .catch(err => console.error(`Removing student: ${studentId} unsuccessful`, err));
+  };
+}
+
 // REDUCER
 
-export default function reducer (state = [], action) {
+export default function reducer(students = [], action) {
 
   switch (action.type) {
 
     case GET_STUDENT:
-      return [...state, action.student];
+      return [...students, action.student];
 
     case GET_STUDENTS:
       return action.students;
 
+    case REMOVE_STUDENT:
+      return students.filter(student => student.id !== action.studentId);
+
     default:
-      return state;
+      return students;
   }
 }

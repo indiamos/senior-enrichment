@@ -6,10 +6,12 @@ import Footer from './Footer';
 
 import AddCampus from './AddCampus';
 import AddStudent from './AddStudent';
+import AllStudents from './AllStudents';
 import Campus from './Campus';
 import CampusList from './CampusList';
 import Student from './Student';
 import StudentList from './StudentList';
+import StudentTable from './StudentTable';
 
 import store, { fetchStudents, fetchCampuses } from '../store';
 
@@ -38,12 +40,12 @@ export default class Root extends Component {
               <Route path="/campuses/:campusId" component={Campus}/>
               {/*<Route path="/campuses/:campusId" render={() => (<Campus campuses={campuses} students={students} />)}/>*/}
               <Route path="/students/:studentId" component={Student} />
-              <Route path="/students" component={StudentList} />
+              <Route path="/students" component={AllStudents} />
               <Route path="/campuses" component={CampusList} />
               <Route component={CampusList} />
             </Switch>
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </BrowserRouter>
     )
